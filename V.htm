@@ -1,0 +1,45 @@
+<html>
+
+<body>
+    <form onsubmit="toLocalStorage(event)">
+        <label> Name: </label>
+        <input type="text" name="username" required />
+        <label> Email: </label>
+        <input type="email" name="emailid" required />
+        <label> Phone no: </label>
+        <input type="tel" name="phoneno" />
+        <button> Submit </button>
+
+    </form>
+    <script>
+        function toLocalStorage(event) {
+            event.preventDefault();
+
+            var name = event.target.username.value;
+            var email = event.target.emailid.value;
+            var phoneno = event.target.phoneno.value;
+
+            localStorage.setItem('name', name);
+            localStorage.setItem('emailid', email);
+            localStorage.setItem('phoneno', phoneno);
+
+        }
+    </script>
+</body>
+
+</html>
+
+<!-- <script>
+    //localStorage.setItem('name', 'bob')
+    //console.log(localStorage.getItem('name'));
+    //localStorage.removeItem('name');
+    //localStorage.setItem('name', 'slay')
+
+    //sessionStorage.setItem('name', 'john')
+
+    
+    // document.cookie = 'lastName=Chachar; expires=' + new Date(9999, 0, 1).toUTCString()
+    // document.cookie = 'name=Apeksha; expires=' + new Date(2023, 0, 6).toUTCString()
+
+    // console.log(document.cookie)
+</script>-->
