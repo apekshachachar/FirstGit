@@ -19,9 +19,17 @@
             var email = event.target.emailid.value;
             var phoneno = event.target.phoneno.value;
 
-            localStorage.setItem('name', name);
-            localStorage.setItem('emailid', email);
-            localStorage.setItem('phoneno', phoneno);
+            // localStorage.setItem('name', name);
+            // localStorage.setItem('emailid', email);
+            // localStorage.setItem('phoneno', phoneno);
+
+            const obj = {
+                name: name, email: email, phoneno: phoneno
+            }
+
+            const str = JSON.stringify(obj)
+
+            localStorage.setItem('obj', str);
 
         }
     </script>
