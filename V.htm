@@ -11,6 +11,8 @@
         <button> Submit </button>
 
     </form>
+    <ul id="listOfItems"></ul>
+
     <script>
         function toLocalStorage(event) {
             event.preventDefault();
@@ -26,10 +28,16 @@
             const obj = {
                 name: name, email: email, phoneno: phoneno
             }
-
             const str = JSON.stringify(obj)
+            localStorage.setItem(obj.name, str);
+            showOnScreen(obj);
+        }
 
-            localStorage.setItem('obj', str);
+        function showOnScreen(obj){
+            let elm=document.getElementById('listOfItems');
+            let li=document.createElement('li');
+            li.textContent=obj.name + ' - ' + obj.email + ' - ' + obj.phoneno
+            elm.appendChild(li);
 
         }
     </script>
