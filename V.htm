@@ -3,11 +3,11 @@
 <body>
     <form onsubmit="toLocalStorage(event)">
         <label> Name: </label>
-        <input type="text" name="username" required />
+        <input type="text" name="username" id='usernameInputTag' required />
         <label> Email: </label>
-        <input type="email" name="emailid" required />
+        <input type="email" name="emailid" id='emailidInputTag' required />
         <label> Phone no: </label>
-        <input type="tel" name="phoneno" />
+        <input type="tel" name="phoneno" if='phonenoInputTag' />
         <button> Submit </button>
 
     </form>
@@ -33,27 +33,41 @@
             showOnScreen(obj);
         }
 
-        function showOnScreen(obj){
+        function showOnScreen(obj) {
 
-            let elm=document.getElementById('listOfItems');
-            let li=document.createElement('li');
+            let elm = document.getElementById('listOfItems');
+            let li = document.createElement('li');
 
-            let del=document.createElement('button')
-            del.id='listOfItems'
+            li.textContent = obj.name + ' - ' + obj.email + ' - ' + obj.phoneno
+
+            let del = document.createElement('button')
+            del.id = 'listOfItems'
             del.appendChild(document.createTextNode('Delete'))
-            
+
+            let edit = document.createElement('button');
+            edit.id = 'listOfItems'
+            edit.appendChild(document.createTextNode('Edit'))
+
             del.onclick = () => {
                 localStorage.removeItem(obj.name);
                 elm.removeChild(li);
             }
 
-            li.textContent=(obj.name + ' - ' + obj.email + ' - ' + obj.phoneno) 
-
-            elm.appendChild(li);
+            edit.onclick = () => {
+                localStorage.removeItem(obj.name);
+                elm.removeChild(li);
+                document.getElementById('usernameInputTag').value = obj.name;
+                document.getElementById('emailidInputTag').value = obj.email;
+                document.getElementById('phonenoInputTag').value = obj.phoneno;
+            }
+            
+            
             li.appendChild(del);
+            li.appendChild(edit);
+            elm.appendChild(li);
         }
 
-     
+
     </script>
 </body>
 
