@@ -34,12 +34,26 @@
         }
 
         function showOnScreen(obj){
+
             let elm=document.getElementById('listOfItems');
             let li=document.createElement('li');
-            li.textContent=obj.name + ' - ' + obj.email + ' - ' + obj.phoneno
-            elm.appendChild(li);
 
+            let del=document.createElement('button')
+            del.id='listOfItems'
+            del.appendChild(document.createTextNode('Delete'))
+            
+            del.onclick = () => {
+                localStorage.removeItem(obj.name);
+                elm.removeChild(li);
+            }
+
+            li.textContent=(obj.name + ' - ' + obj.email + ' - ' + obj.phoneno) 
+
+            elm.appendChild(li);
+            li.appendChild(del);
         }
+
+     
     </script>
 </body>
 
